@@ -14,7 +14,7 @@ def index():
 
 @app.route('/invocation', methods=['GET'])
 def get_prediction():
-                       feature1 = float(request.args.get('f1'))
+    feature1 = float(request.args.get('f1'))
     feature2 = float(request.args.get('f2'))
     feature3 = float(request.args.get('f3'))
     loaded_model = pickle.load(open('model.pkl', 'rb'))
