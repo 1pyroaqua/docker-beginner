@@ -5,9 +5,11 @@ WORKDIR /app/
 COPY requirements.txt /app/
 RUN pip install -r ./requirements.txt
 
-COPY code/train /app/train
+COPY code/ /app/train/
 
-RUN chmod +x /app/train/*
+RUN mkdir -p /app/model
+
+RUN chmod -R +x /app/*
 
 ENV ENVIRONMENT train
 
