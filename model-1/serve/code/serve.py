@@ -17,7 +17,7 @@ def get_prediction():
     feature1 = float(request.args.get('f1'))
     feature2 = float(request.args.get('f2'))
     feature3 = float(request.args.get('f3'))
-    loaded_model = pickle.load(open('model.pkl', 'rb'))
+    loaded_model = pickle.load(open('model/model.pkl', 'rb'))
     prediction = loaded_model.predict([[feature1, feature2, feature3]])
     return str(prediction)
 
