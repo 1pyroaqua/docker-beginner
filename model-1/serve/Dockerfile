@@ -1,11 +1,17 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.6
+FROM python:3.6-slim
 
 WORKDIR /app/
 
 COPY requirements.txt /app/
 RUN pip install -r ./requirements.txt
 
-ENV ENVIRONMENT production
+COPY code/ /app/serve/
 
-COPY main.py __init__.py /app/
+RUN mkdir -p /app/model
+
+RUN chmod -R +x /app/*
+
+ENV ENVIRONMENT serve
+
+ENTRYPOINT serve/serve.py
 
